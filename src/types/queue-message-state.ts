@@ -11,5 +11,5 @@ export interface QueueMessageState {
 		combined: number
 	}
 	activeByDesk: Record<number, Ticket | undefined>
-	recentlyServed: Ticket[] // last 10 tickets served
+	recentlyServed: Ticket[] // last 8 tickets served
 }
