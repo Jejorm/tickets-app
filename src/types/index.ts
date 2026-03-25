@@ -33,3 +33,8 @@ export type ClientMessage =
 export interface WebSocketData {
 	clientId: string
 }
+
+export interface HandleResult {
+	personal: ServerMessage[]
+	broadcast: ServerMessage[]
+}
