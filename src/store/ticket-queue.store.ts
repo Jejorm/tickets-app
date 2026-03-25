@@ -83,19 +83,11 @@ export class TicketQueueStore {
 	}
 
 	assignNextTicket(deskNumber: number, forceNormalTicket: boolean) {
-		let ticket: Ticket | undefined
+		const queuePriority = forceNormalTicket
+			? [this.state.pending.normal, this.state.pending.preferential]
+			: [this.state.pending.preferential, this.state.pending.normal]
 
-		if (forceNormalTicket) {
-			ticket = this.state.pending.normal.shift()
-		}
-
-		if (!ticket) {
-			ticket = this.state.pending.preferential.shift()
-		}
-
-		if (!ticket) {
-			ticket = this.state.pending.normal.shift()
-		}
+		const ticket = queuePriority.find((queue) => queue.length > 0)?.shift()
 
 		if (!ticket) {
 			return undefined
