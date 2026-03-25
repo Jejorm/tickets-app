@@ -28,7 +28,7 @@ export class TicketQueueStore {
 		recentlyServed: [],
 	}
 
-	getAll(): QueueMessageState {
+	getState(): QueueMessageState {
 		return {
 			lastTicketNumbers: {
 				A: this.state.lastTicketNumbers.A,
